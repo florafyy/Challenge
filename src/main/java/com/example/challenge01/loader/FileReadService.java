@@ -50,7 +50,7 @@ public class FileReadService {
         categoryRepository.saveAll(categorieToSave);
 
         for (CSVRepresentation csvRepresentation : csvRepresentations) {
-            Category c = categoryMap.get(csvRepresentation.getCategoryCode());
+            Category c = categoryMap.get(csvRepresentation.getProductCategoryCode());
             if (!productRepository.existsByCode(csvRepresentation.getProductCode()) && c != null) {
                 Product product = Product.builder().category(c).code(csvRepresentation.getProductCode()).name(csvRepresentation.getProductName()).createDate(LocalDateTime.now()).build();
                 productToSave.add(product);
